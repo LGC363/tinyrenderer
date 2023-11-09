@@ -33,7 +33,7 @@ struct Shader : IShader {
 
     virtual bool fragment(const vec3 bar, TGAColor &gl_FragColor) {
         vec3 bn = (varying_nrm*bar).normalized(); // per-vertex normal interpolation
-        vec2 uv = varying_uv*bar; // tex coord interpolation
+        vec2 uv = varying_uv*bar; // texcoord interpolation
 
 
         mat<3,3> AI = mat<3,3>{ {view_tri.col(1) - view_tri.col(0), view_tri.col(2) - view_tri.col(0), bn} }.invert();

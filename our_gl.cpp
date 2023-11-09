@@ -12,7 +12,7 @@ void projection(const double f) { // check https://en.wikipedia.org/wiki/Camera_
     Projection = {{{1,0,0,0}, {0,-1,0,0}, {0,0,1,0}, {0,0,-1/f,0}}};
 }
 
-void lookat(const vec3 eye, const vec3 center, const vec3 up) { // check https://github.com/ssloy/tinyrenderer/wiki/Lesson-5-Moving-the-camera
+void lookat(const vec3 eye, const vec3 center, const vec3 up) {
     vec3 z = (center-eye).normalized();
     vec3 x =  cross(up,z).normalized();
     vec3 y =  cross(z, x).normalized();
@@ -43,7 +43,7 @@ void triangle(const vec4 clip_verts[3], IShader &shader, TGAImage &image, std::v
         for (int y=std::max(bboxmin[1], 0); y<=std::min(bboxmax[1], image.height()-1); y++) {
             vec3 bc_screen = barycentric(pts2, {static_cast<double>(x), static_cast<double>(y)});
             vec3 bc_clip   = {bc_screen.x/pts[0][3], bc_screen.y/pts[1][3], bc_screen.z/pts[2][3]};
-            bc_clip = bc_clip/(bc_clip.x+bc_clip.y+bc_clip.z); // check https://github.com/ssloy/tinyrenderer/wiki/Technical-difficulties-linear-interpolation-with-perspective-deformations
+            bc_clip = bc_clip/(bc_clip.x+bc_clip.y+bc_clip.z); 
             double frag_depth = vec3{clip_verts[0][2], clip_verts[1][2], clip_verts[2][2]}*bc_clip;
             if (bc_screen.x<0 || bc_screen.y<0 || bc_screen.z<0 || frag_depth > zbuffer[x+y*image.width()]) continue;
             TGAColor color;

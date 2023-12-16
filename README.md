@@ -44,4 +44,7 @@ virtual bool fragment(Vec3f bar, TGAColor &color)；
 
 AO为每个像素定义了一个遮挡度值，通过从像素发射出多条射线，来大致模拟环境光的遮挡度，是一种近似的全局光照技术，近似模拟间接光照，改进了Phong 反射模型的环境光部分。
 
+--成果展示
+![image](https://github.com/LGC363/tinyrenderer/blob/main/result.png)
+
 
